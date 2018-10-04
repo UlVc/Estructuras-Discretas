@@ -9,10 +9,11 @@ module Binario where
   show (Uno b) = show b ++ "1"
 
  --Exercise 3.1
- data Binario2 = BaseCero deriving (Eq)
+ data Binario2 = BaseCero | Binario Binario deriving (Eq)
  
  instance Show Binario2 where
-  show BaseCero = "0"  
+  show BaseCero = "0"
+  show (Binario n) = show n
 
 --Exercise 1.2
 -- |Receives an integer and returns his representation in Binario form.

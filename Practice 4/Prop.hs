@@ -58,7 +58,7 @@ module Prop where
                         Neg x -> case x of Var p -> Neg $ Var p
                                            Conj p q -> Disy (Neg $ deMorgan p) $ Neg $ deMorgan q
                                            Disy p q -> Conj (Neg $ deMorgan p) $ Neg $ deMorgan q
-                                           Neg n -> n
+                                           Neg n -> deMorgan n
                                            otherwise -> Neg x
 
 -- EVALUATION AND SYNTATIC ANALYSIS OF EXPRESSIONS

@@ -56,8 +56,8 @@ module Prop where
                         Conj x y -> Conj (deMorgan x) $ deMorgan y
                         Disy x y -> Disy (deMorgan x) $ deMorgan y
                         Neg x -> case x of Var p -> Neg $ Var p
-                                           Conj p q -> Disy (Neg $ deMorgan p) $ Neg $ deMorgan q
-                                           Disy p q -> Conj (Neg $ deMorgan p) $ Neg $ deMorgan q
+                                           Conj p q -> Disy (deMorgan $ Neg p) $ deMorgan $ Neg q
+                                           Disy p q -> Conj (deMorgan $ Neg p) $ deMorgan $ Neg q
                                            Neg n -> deMorgan n
                                            otherwise -> Neg x
 
@@ -132,7 +132,7 @@ module Prop where
   | otherwise = "Contingencia"
             where
               a = map (interp x) $ estados x
-              b = length $ filter (\x -> x == True) a
+              b = length $ filter (\x -> x) a
 
  -- Exercise 2.3 
  
